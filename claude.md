@@ -34,7 +34,7 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 ```python
 import os
 if not os.path.exists('/content/RepEng_Survival'):
-    !git clone https://github.com/<your-username>/RepEng_Survival.git /content/RepEng_Survival
+    !git clone https://github.com/Pranamya16/RepEng_Survival.git /content/RepEng_Survival
 else:
     !cd /content/RepEng_Survival && git pull
 %cd /content/RepEng_Survival
