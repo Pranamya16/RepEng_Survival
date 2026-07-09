@@ -1,0 +1,11 @@
+# Colab already ships a CUDA-matched torch — do not force-reinstall it.
+# Install/upgrade the rest with: pip install -q -U -r requirements.txt
+transformers==4.48.3
+accelerate==1.3.0
+bitsandbytes==0.45.0
+datasets==3.2.0
+scikit-learn==1.6.1
+matplotlib==3.10.0
+sentencepiece==0.2.0
+protobuf==5.29.3
+huggingface_hub==0.27.1
