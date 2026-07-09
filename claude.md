@@ -98,16 +98,11 @@ def load_result_if_exists(name):
 
 ---
 
-## 5. End-of-notebook: push results back to GitHub
+## 5. Results stay on Drive — never push results to GitHub
 
-After a stage finishes (or Drive already has the final result files), commit the result summaries (tables, small JSON/CSV — not huge tensor files) back to the repo's `/results` folder:
+All result files (JSON, CSV, tables, plots, activation tensors) live only in `RESULTS_DIR` on Google Drive. Do not `git add`/commit/push anything from `/results` to GitHub, in any notebook.
 
-```python
-!cp /content/drive/MyDrive/RepEng_Survival/results/*.json /content/RepEng_Survival/results/
-!cd /content/RepEng_Survival && git add results/ && git commit -m "Add results: <stage name>" && git push
-```
-
-Large files (raw activation tensors, model weights) stay on Drive only — do not push those to GitHub.
+Only push actual code changes (`.py` in `/src`, `.ipynb` in `/notebooks`) to GitHub, and only when you've made a real edit to that code — not as part of a routine experiment run.
 
 ---
 
@@ -119,3 +114,4 @@ Large files (raw activation tensors, model weights) stay on Drive only — do no
 - [ ] Only one model loaded on GPU at a time, unloaded before switching
 - [ ] Checkpoint check added before any expensive step
 - [ ] Save-to-Drive call added after every expensive step
+- [ ] No result files staged/committed/pushed to GitHub
