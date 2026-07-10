@@ -12,14 +12,15 @@ def extract_activations(model, tokenizer, prompts):
 
     Returns a tensor [num_prompts, num_layers+1, hidden_dim] — layer 0 is the
     embedding output, layers 1..N are each transformer block's output
-    (matches `output_hidden_states` from a HF forward pass).
+    (matches `output_hidden_states` from a HF forward pass). Stored as
+    float16 to keep saved activation files a manageable size.
     """
     model.eval()
     all_acts = []
     for prompt in prompts:
         encoded = tokenizer(prompt, return_tensors='pt').to(model.device)
         outputs = model(**encoded, output_hidden_states=True)
-        layer_acts = torch.stack([h[0, -1].float().cpu() for h in outputs.hidden_states], dim=0)
+        layer_acts = torch.stack([h[0, -1].half().cpu() for h in outputs.hidden_states], dim=0)
         all_acts.append(layer_acts)
     return torch.stack(all_acts, dim=0)
 
