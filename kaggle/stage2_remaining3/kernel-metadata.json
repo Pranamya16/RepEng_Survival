@@ -1,6 +1,6 @@
 {
-  "id": "pranamyadeshpande/repeng-survival-stage2-remaining3",
-  "title": "RepEng Survival - Stage 2 Remaining 3 Models",
+  "id": "pranamyadeshpande/repeng-survival-stage2-llm-remaining3-v2",
+  "title": "RepEng Survival Stage 2 Remaining Models V2",
   "code_file": "stage2_remaining3.py",
   "language": "python",
   "kernel_type": "script",
