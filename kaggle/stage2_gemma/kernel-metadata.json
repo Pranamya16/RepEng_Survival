@@ -1,0 +1,16 @@
+{
+  "id": "pranamyadeshpande/repeng-survival-stage-2-baseline-extraction",
+  "title": "RepEng Survival - Stage 2 Gemma-2-2B-IT",
+  "code_file": "stage2_gemma.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "machine_shape": "",
+  "dataset_sources": ["pranamyadeshpande/repeng-survival-hf-token"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}
