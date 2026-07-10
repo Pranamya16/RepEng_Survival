@@ -1,10 +1,12 @@
 """Stage 2 (Kaggle runner, single model) — Qwen2.5-3B-Instruct baseline
-activation extraction & refusal behavior. Account: kakashi26.
+activation extraction & refusal behavior. Account: pranamyadeshpande.
 
-One of 4 parallel single-model kernels (see kaggle/stage2_*) run across 4
-separate Kaggle accounts so all 4 models process simultaneously instead of
-sequentially. Same logic as kaggle/stage2_baseline_extraction, just scoped
-to one model. Not gated on HF, so no token needed.
+Originally split across 4 separate Kaggle accounts for parallelism, but
+Kaggle requires phone verification (one account per phone number) for
+internet access, and only pranamyadeshpande was verified - so all 4 models
+run sequentially on this one account instead. Same logic as
+kaggle/stage2_baseline_extraction, just scoped to one model, pushed and run
+one at a time. Not gated on HF, so no token needed.
 """
 
 import os

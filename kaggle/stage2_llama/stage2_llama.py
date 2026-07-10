@@ -1,11 +1,14 @@
 """Stage 2 (Kaggle runner, single model) — Llama-3.2-3B-Instruct baseline
-activation extraction & refusal behavior. Account: hunter69xffff.
+activation extraction & refusal behavior. Account: pranamyadeshpande.
 
-One of 4 parallel single-model kernels (see kaggle/stage2_*) run across 4
-separate Kaggle accounts so all 4 models process simultaneously instead of
-sequentially. Same logic as kaggle/stage2_baseline_extraction, just scoped
-to one model. HF token read from a mounted private dataset (Kaggle Secrets
-don't carry over to API-triggered pushes).
+Originally split across 4 separate Kaggle accounts for parallelism, but
+Kaggle requires phone verification (one account per phone number) for
+internet access, and only pranamyadeshpande was verified - so all 4 models
+run sequentially on this one account instead (Kaggle also caps concurrent
+batch GPU sessions at 2 per account, confirmed by direct test). Same logic
+as kaggle/stage2_baseline_extraction, just scoped to one model, pushed and
+run one at a time. HF token read from a mounted private dataset (Kaggle
+Secrets don't carry over to API-triggered pushes).
 """
 
 import os

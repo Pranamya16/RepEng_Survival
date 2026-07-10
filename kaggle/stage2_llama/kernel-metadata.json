@@ -1,5 +1,5 @@
 {
-  "id": "hunter69xffff/repeng-survival-stage2-llama",
+  "id": "pranamyadeshpande/repeng-survival-stage2-llama",
   "title": "RepEng Survival - Stage 2 Llama-3.2-3B-Instruct",
   "code_file": "stage2_llama.py",
   "language": "python",
@@ -9,7 +9,7 @@
   "enable_tpu": "false",
   "enable_internet": "true",
   "machine_shape": "",
-  "dataset_sources": ["hunter69xffff/repeng-survival-hf-token"],
+  "dataset_sources": ["pranamyadeshpande/repeng-survival-hf-token"],
   "competition_sources": [],
   "kernel_sources": [],
   "model_sources": []

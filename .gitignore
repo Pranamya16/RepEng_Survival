@@ -14,3 +14,6 @@ __pycache__/
 # results: Drive only, per claude.md — never pushed to GitHub
 /results/*
 !/results/.gitkeep
+
+# Kaggle kernel outputs downloaded locally — same rule, never pushed
+/kaggle_downloads/
