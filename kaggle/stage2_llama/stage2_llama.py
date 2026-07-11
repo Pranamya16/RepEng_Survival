@@ -54,10 +54,16 @@ try:
     print("Loaded HF token from Kaggle Secrets.")
 except Exception as e:
     print(f"Kaggle Secrets unavailable ({e}); falling back to dataset-mounted token.")
-    if os.path.exists(HF_TOKEN_DATASET_PATH):
-        with open(HF_TOKEN_DATASET_PATH) as f:
-            hf_token = f.read().strip()
-        print("Loaded HF token from mounted dataset.")
+    import time
+    for attempt in range(5):
+        if os.path.exists(HF_TOKEN_DATASET_PATH):
+            with open(HF_TOKEN_DATASET_PATH) as f:
+                hf_token = f.read().strip()
+            print(f"Loaded HF token from mounted dataset (attempt {attempt + 1}).")
+            break
+        print(f"Dataset not mounted yet at {HF_TOKEN_DATASET_PATH} (attempt {attempt + 1}/5), waiting 10s...")
+        print(f"  /kaggle/input contents: {os.listdir('/kaggle/input') if os.path.exists('/kaggle/input') else 'MISSING'}")
+        time.sleep(10)
 
 if hf_token:
     from huggingface_hub import login
