@@ -1,6 +1,6 @@
 {
-  "id": "pranamyadeshpande/repeng-survival-stage2-llama",
-  "title": "RepEng Survival - Stage 2 Llama-3.2-3B-Instruct",
+  "id": "pranamyadeshpande/repeng-survival-stage2-llama-v2",
+  "title": "RepEng Survival Stage 2 Llama Retry V2",
   "code_file": "stage2_llama.py",
   "language": "python",
   "kernel_type": "script",
