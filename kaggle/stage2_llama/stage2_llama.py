@@ -44,7 +44,14 @@ ACTIVATIONS_DIR = os.path.join(RESULTS_DIR, "activations")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(ACTIVATIONS_DIR, exist_ok=True)
 
-HF_TOKEN_DATASET_PATH = "/kaggle/input/repeng-survival-hf-token/hf_token.txt"
+def find_hf_token_file():
+    """Kaggle's dataset mount layout under /kaggle/input isn't consistent
+    across kernels (sometimes flat, sometimes nested under a 'datasets'
+    subfolder) - search for the file instead of assuming a fixed path."""
+    import glob
+    matches = glob.glob("/kaggle/input/**/hf_token.txt", recursive=True)
+    return matches[0] if matches else None
+
 
 hf_token = None
 try:
@@ -56,12 +63,13 @@ except Exception as e:
     print(f"Kaggle Secrets unavailable ({e}); falling back to dataset-mounted token.")
     import time
     for attempt in range(5):
-        if os.path.exists(HF_TOKEN_DATASET_PATH):
-            with open(HF_TOKEN_DATASET_PATH) as f:
+        token_path = find_hf_token_file()
+        if token_path:
+            with open(token_path) as f:
                 hf_token = f.read().strip()
-            print(f"Loaded HF token from mounted dataset (attempt {attempt + 1}).")
+            print(f"Loaded HF token from mounted dataset at {token_path} (attempt {attempt + 1}).")
             break
-        print(f"Dataset not mounted yet at {HF_TOKEN_DATASET_PATH} (attempt {attempt + 1}/5), waiting 10s...")
+        print(f"Dataset not found under /kaggle/input yet (attempt {attempt + 1}/5), waiting 10s...")
         print(f"  /kaggle/input contents: {os.listdir('/kaggle/input') if os.path.exists('/kaggle/input') else 'MISSING'}")
         time.sleep(10)
 
